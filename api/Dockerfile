@@ -8,7 +8,7 @@ ARG PHP_VERSION=8.1
 ARG CADDY_VERSION=2
 
 # "php" stage
-FROM php:${PHP_VERSION}-fpm-alpine AS api_platform_php
+FROM php:${PHP_VERSION}-fpm-alpine AS cat_game_php
 
 # persistent / runtime deps
 RUN apk add --no-cache \
@@ -117,19 +117,19 @@ CMD ["php-fpm"]
 
 # "caddy" stage
 # depends on the "php" stage above
-FROM caddy:${CADDY_VERSION}-builder-alpine AS api_platform_caddy_builder
+FROM caddy:${CADDY_VERSION}-builder-alpine AS cat_game_caddy_builder
 
 # install Mercure and Vulcain modules
-RUN xcaddy build \
-    --with github.com/dunglas/mercure \
-    --with github.com/dunglas/mercure/caddy \
-    --with github.com/dunglas/vulcain \
-    --with github.com/dunglas/vulcain/caddy
+RUN xcaddy build
+#    --with github.com/dunglas/mercure \
+#    --with github.com/dunglas/mercure/caddy \
+#    --with github.com/dunglas/vulcain \
+#    --with github.com/dunglas/vulcain/caddy
 
-FROM caddy:${CADDY_VERSION} AS api_platform_caddy
+FROM caddy:${CADDY_VERSION} AS cat_game_caddy
 
 WORKDIR /srv/api
 
-COPY --from=api_platform_caddy_builder /usr/bin/caddy /usr/bin/caddy
-COPY --from=api_platform_php /srv/api/public public/
+COPY --from=cat_game_caddy_builder /usr/bin/caddy /usr/bin/caddy
+COPY --from=cat_game_php /srv/api/public public/
 COPY docker/caddy/Caddyfile /etc/caddy/Caddyfile

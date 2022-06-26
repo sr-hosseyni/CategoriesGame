@@ -20,6 +20,15 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
+            - '../src/Serializer/Normalizer\TimestampableNormalizer.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app.serializer.normalizer.timestampable:
+        public: false
+        class: App\Serializer\Normalizer\TimestampableNormalizer
+        arguments:
+            - '@api_platform.serializer.normalizer.item'
+        tags:
+            - { name: serializer.normalizer }

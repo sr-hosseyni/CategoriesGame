@@ -11,19 +11,24 @@ services:
     environment:
       APP_ENV: dev
 
-  pwa:
-    build:
-      context: ./pwa
-      target: api_platform_pwa_dev
+  front:
+#    build:
+#      context: ./front/docker
+#      target: cat_game_fe_dev
+    image: alexsuch/angular-cli:latest
     volumes:
-      - ./pwa:/usr/src/pwa:rw,cached
+      - ./front:/app:rw,cached
+    working_dir: /app
+#    entrypoint: ["npm", "i"]
+    entrypoint: ["ng", "serve", "--port", "4200", "--host", "0.0.0.0"]
+    ports:
+      - "4200:4200"
 
   caddy:
     volumes:
       - ./api/docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - ./api/public:/srv/api/public:ro
-    environment:
-      MERCURE_EXTRA_DIRECTIVES: demo
+      - ./front/dist/front:/srv/front:ro
 
 ###> doctrine/doctrine-bundle ###
   database:
@@ -32,6 +37,3 @@ services:
         published: 5432
         protocol: tcp
 ###< doctrine/doctrine-bundle ###
-
-###> symfony/mercure-bundle ###
-###< symfony/mercure-bundle ###

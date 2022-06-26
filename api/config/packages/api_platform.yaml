@@ -7,8 +7,18 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
-    # Mercure integration, remove if unwanted
-    mercure: ~
+
+    formats:
+        json: [ 'application/json' ]
+#        jsonld: [ 'application/ld+json' ]
+#        jsonhal: [ 'application/hal+json' ]
+#        jsonapi: [ 'application/vnd.api+json' ]
+#        xml: [ 'application/xml', 'text/xml' ]
+#        yaml: [ 'application/x-yaml' ]
+#        csv: [ 'text/csv' ]
+#        html: [ 'text/html' ]
+#        myformat: [ 'application/vnd.myformat' ]
+
     # Good cache defaults for REST APIs
     defaults:
         stateless: true

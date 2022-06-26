@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Players</h1>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered w">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <!--      <th>Created At</th>-->
+          <!--      <th>Updated At</th>-->
+          <th></th>
+        </tr>
+        <tr *ngFor="let player of players">
+          <td>{{ player.id }}</td>
+          <td>{{ player.name }}</td>
+          <td>{{ player.email }}</td>
+          <!--      <td>{{ player.created_at }}</td>-->
+          <!--      <td>{{ player.updated_at }}</td>-->
+          <td>
+            <div class="justify-content-end d-flex">
+              <div class="btn-group">
+                <a href="#" routerLink="/players/{{ player.id }}" [state]="{data: {currentPlayer: player}}"
+                   class="btn btn-sm btn-outline-info">View</a>
+                <a href="#" routerLink="/players/{{ player.id }}/edit" [state]="{data: {currentPlayer: player}}"
+                   class="btn btn-sm btn-outline-dark">Edit</a>
+                <a href="#" (click)="deletePlayer(player)" class="btn btn-sm btn-outline-danger">Delete</a>
+              </div>
+            </div>
+            <!--        <a href="#" [routerLink]="['/players/', player.id]"  class="btn btn-sm btn-info">View</a>-->
+            <!--        <a href="#" [routerLink]="['/players/', player.id, 'edit']"  class="btn btn-sm btn-primary">Edit</a>-->
+            <!--        <button type="button" (click)="deletePlayer(player)"  class="btn btn-sm btn-danger">Delete</button>-->
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 my-2">
+      <a href="#" routerLink="/players/create" class="btn btn-sm btn-success">Create New Player</a>
+    </div>
+  </div>
+</div>

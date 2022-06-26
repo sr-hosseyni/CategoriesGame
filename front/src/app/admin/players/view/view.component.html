@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>{{ player.name }}</h1>
+
+  <a href="#" routerLink="/players/index" class="btn btn-primary">Back</a>
+
+  <div>
+    <strong>ID:</strong>
+    <p>{{ player.id }}</p>
+  </div>
+
+  <div>
+    <strong>Name:</strong>
+    <p>{{ player.name }}</p>
+  </div>
+
+  <div>
+    <strong>Email:</strong>
+    <p>{{ player.created_at }}</p>
+  </div>
+
+  <div>
+    <strong>Created At:</strong>
+    <p>{{ player.created_at }}</p>
+  </div>
+
+  <div>
+    <strong>Updated At:</strong>
+    <p>{{ player.updated_at }}</p>
+  </div>
+
+  <a href="#" [routerLink]="['/players/', player.id, 'edit']" class="btn btn-primary">Edit</a>
+  <button type="button" (click)="deletePlayer(player)" class="btn btn-danger">Delete</button>
+
+</div>

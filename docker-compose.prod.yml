@@ -6,13 +6,11 @@ services:
     environment:
       APP_ENV: prod
       APP_SECRET: ${APP_SECRET}
-      MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET}
-
-  caddy:
-    environment:
-      MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
-      MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
 
   database:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  
+  cache:
+    environment:
+      AUTO_HTTPS: "disable_redirects"
