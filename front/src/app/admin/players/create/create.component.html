@@ -1,35 +1,44 @@
 <div class="container">
-  <h1>Create New Player</h1>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header">
+          <h3 class="text-center font-weight-light my-4">Create New Player</h3>
+        </div>
+        <div class="card-body">
 
-  <a href="#" routerLink="/players/index" class="btn btn-primary">Back</a>
+          <a href="#" routerLink="/players/index" class="btn btn-warning">Back</a>
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
+          <form [formGroup]="form" (ngSubmit)="submit()">
 
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        formControlName="name"
-        id="name"
-        type="text"
-        class="form-control">
-      <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
-        <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+            <div class="form-floating mb-3">
+              <input formControlName="name" id="name" type="text" class="form-control" placeholder="Player Name">
+              <label for="name">Name</label>
+
+              <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-floating mb-3">
+                <input formControlName="email" id="email" type="email" class="form-control"
+                       placeholder="name@example.com">
+                <label for="email">Email</label>
+              </div>
+              <div class=" mb-2">
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="alert-danger">
+                  <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                  <div *ngIf="f['email'].errors && f['email'].errors['email']">Email is invalid.</div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-success" type="submit" [disabled]="!form.valid">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        formControlName="email"
-        id="email"
-        type="email"
-        class="form-control">
-      <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
-        <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
-        <div *ngIf="f['email'].errors && f['email'].errors['email']">Email is invalid.</div>
-      </div>
-    </div>
-
-    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
-  </form>
+  </div>
 </div>
+

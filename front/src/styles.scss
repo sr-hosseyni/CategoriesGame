@@ -1,1 +1,6 @@
-// @import "~bootstrap/dist/css/bootstrap.css"; //  already included in the angular.json
+@import 'styles/variables';
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+@import "styles/bootstrap";

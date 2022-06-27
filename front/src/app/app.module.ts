@@ -8,6 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {environment} from "../environments/environment";
 import { AdminModule } from "./admin/admin.module";
 import { CommonModule } from "@angular/common";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
@@ -26,6 +27,7 @@ export function apiConfigFactory(): Configuration {
     HttpClientModule,
     ApiModule.forRoot(apiConfigFactory),
     AdminModule,
+    NgbModule,
     AppRoutingModule
   ],
   providers: [],
