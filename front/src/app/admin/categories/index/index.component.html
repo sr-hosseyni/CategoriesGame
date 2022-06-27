@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Categorys</h1>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered w">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <!--      <th>Created At</th>-->
+          <!--      <th>Updated At</th>-->
+          <th></th>
+        </tr>
+        <tr *ngFor="let category of categories">
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td>{{ category.description }}</td>
+          <!--      <td>{{ category.created_at }}</td>-->
+          <!--      <td>{{ category.updated_at }}</td>-->
+          <td>
+            <div class="justify-content-end d-flex">
+              <div class="btn-group">
+                <a href="#" routerLink="/categories/{{ category.id }}" [state]="{data: {currentCategory: category}}"
+                   class="btn btn-sm btn-outline-info">View</a>
+                <a href="#" routerLink="/categories/{{ category.id }}/edit" [state]="{data: {currentCategory: category}}"
+                   class="btn btn-sm btn-outline-dark">Edit</a>
+                <button (click)="deleteCategory(category)" class="btn btn-sm btn-outline-danger">Delete</button>
+              </div>
+            </div>
+            <!--        <a href="#" [routerLink]="['/categories/', category.id]"  class="btn btn-sm btn-info">View</a>-->
+            <!--        <a href="#" [routerLink]="['/categories/', category.id, 'edit']"  class="btn btn-sm btn-primary">Edit</a>-->
+            <!--        <button type="button" (click)="deleteCategory(category)"  class="btn btn-sm btn-danger">Delete</button>-->
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 my-2">
+      <a href="#" routerLink="/categories/create" class="btn btn-sm btn-success">Create New Category</a>
+    </div>
+  </div>
+</div>

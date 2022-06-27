@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "http://caddy",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
