@@ -10,7 +10,3 @@ services:
   database:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-  
-  cache:
-    environment:
-      AUTO_HTTPS: "disable_redirects"

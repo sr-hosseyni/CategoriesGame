@@ -19,8 +19,6 @@
       <path value="$PROJECT_DIR$/api/vendor/doctrine/collections" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/orm" />
-      <path value="$PROJECT_DIR$/api/vendor/lcobucci/clock" />
-      <path value="$PROJECT_DIR$/api/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/deprecations" />
       <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/psr7" />
@@ -59,14 +57,12 @@
       <path value="$PROJECT_DIR$/api/vendor/easyrdf/easyrdf" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/dotenv" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/serializer" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/mercure" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/asset" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/monolog-bridge" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/validator" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/security-bundle" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/mercure-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php81" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/expression-language" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/security-http" />
@@ -88,7 +84,6 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/web-link" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/css-selector" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/http-client" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
@@ -101,7 +96,6 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/security-core" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/property-info" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/flex" />

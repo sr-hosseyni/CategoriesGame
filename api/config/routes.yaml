@@ -1,11 +1,14 @@
 controllers:
     resource: ../src/Controller/
     type: annotation
+    prefix: /api
 
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+    prefix: /api
 
 swagger_ui:
-    path: /ui
+    path: /api/ui
     controller: api_platform.swagger.action.ui
+

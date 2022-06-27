@@ -23,8 +23,6 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/collections" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/event-manager" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/orm" />
-      <excludeFolder url="file://$MODULE_DIR$/api/vendor/lcobucci/clock" />
-      <excludeFolder url="file://$MODULE_DIR$/api/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/doctrine-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/deprecations" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/guzzlehttp/psr7" />
@@ -63,14 +61,12 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/easyrdf/easyrdf" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/dotenv" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/serializer" />
-      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/mercure" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/monolog-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/asset" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/cache" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/monolog-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/validator" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/security-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/mercure-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/polyfill-php81" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/expression-language" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/security-http" />
@@ -92,7 +88,6 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/web-link" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/event-dispatcher-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/css-selector" />
-      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/finder" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/twig-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/property-access" />
@@ -105,7 +100,6 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/security-core" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/property-info" />
-      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/http-client-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/error-handler" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/flex" />
