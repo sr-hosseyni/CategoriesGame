@@ -36,53 +36,72 @@
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-<!--      <form class="d-flex" role="search">-->
-<!--        <input class="form-control form-control-sm me-2 bg-light" type="search" placeholder="Search" aria-label="Search">-->
-<!--        <button class="btn btn-sm btn-outline-light" type="submit">Search</button>-->
-<!--      </form>-->
+      <!--      <form class="d-flex" role="search">-->
+      <!--        <input class="form-control form-control-sm me-2 bg-light" type="search" placeholder="Search" aria-label="Search">-->
+      <!--        <button class="btn btn-sm btn-outline-light" type="submit">Search</button>-->
+      <!--      </form>-->
     </div>
   </div>
 </nav>
 
 <div class="container">
-<a href="#" [routerLink]="['/']" class="">
-  <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-  </svg>
-  <span>Home</span>
-</a>
+  <nav
+    style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#" [routerLink]="['/']">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="#" [routerLink]="['/players']">Players</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <a href="#" [routerLink]="['/players/10']">
+          #10
+        </a>
+      </li>
+    </ol>
+  </nav>
 
-<a href="#" [routerLink]="['/games']">
-  <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-  </svg>
-  <span>Games</span>
-</a>
 
-<a href="#" routerLink="/game">
-  <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-  </svg>
-  <span>Game</span>
-</a>
+  <a href="#" [routerLink]="['/']" class="">
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+    </svg>
+    <span>Home</span>
+  </a>
 
-<a href="#" routerLink="/players">
-  <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-  </svg>
-  <span>Player</span>
-</a>
+  <a href="#" [routerLink]="['/games']">
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+    </svg>
+    <span>Games</span>
+  </a>
 
-<a href="#" routerLink="/categories">
-  <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-  </svg>
-  <span>Category</span>
-</a>
+  <a href="#" routerLink="/game">
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+    </svg>
+    <span>Game</span>
+  </a>
+
+  <a href="#" routerLink="/players">
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+    </svg>
+    <span>Player</span>
+  </a>
+
+  <a href="#" routerLink="/categories">
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+    </svg>
+    <span>Category</span>
+  </a>
 </div>
 
 <div class="container" role="main">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
   <!-- Footer -->
   <footer>

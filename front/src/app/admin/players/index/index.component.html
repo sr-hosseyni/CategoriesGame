@@ -27,6 +27,7 @@
               <td>
                 <div class="justify-content-end d-flex my-1">
                   <div class="btn-group btn-group-sm">
+<!--                    <button (click)="openPlayer(player)" class="btn btn-sm btn-info">Open</button>-->
                     <a href="#" routerLink="/players/{{ player.id }}" [state]="{data: {currentPlayer: player}}"
                        class="btn btn-sm btn-info">View</a>
                     <a href="#" routerLink="/players/{{ player.id }}/edit" [state]="{data: {currentPlayer: player}}"

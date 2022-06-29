@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerRead, PlayerService } from "../../../core/api";
 import { Router } from "@angular/router";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ViewComponent } from "../view/view.component";
 
 @Component({
   selector: 'app-index',
@@ -10,7 +12,7 @@ import { Router } from "@angular/router";
 export class IndexComponent implements OnInit {
   players: PlayerRead[] = [];
 
-  constructor(private playerService: PlayerService, private router: Router) {
+  constructor(private playerService: PlayerService, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -31,6 +33,8 @@ export class IndexComponent implements OnInit {
   }
 
   openPlayer(player: PlayerRead): void {
-    this.router.navigateByUrl('/players/' + player.id, {state: {currentPlayer: player}});
+    const modalRef = this.modalService.open(ViewComponent);
+    modalRef.componentInstance.player = player;
+    modalRef.componentInstance.id = player.id;
   }
 }

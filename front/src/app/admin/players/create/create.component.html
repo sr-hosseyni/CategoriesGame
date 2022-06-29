@@ -1,41 +1,59 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-5">
-      <div class="card shadow-lg border-0 rounded-lg mt-5">
+      <div class="card shadow-lg border-0 rounded-lg">
         <div class="card-header">
           <h3 class="text-center font-weight-light my-4">Create New Player</h3>
         </div>
         <div class="card-body">
-
-          <a href="#" routerLink="/players/index" class="btn btn-warning">Back</a>
-
-          <form [formGroup]="form" (ngSubmit)="submit()">
-
-            <div class="form-floating mb-3">
-              <input formControlName="name" id="name" type="text" class="form-control" placeholder="Player Name">
-              <label for="name">Name</label>
-
-              <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
-                <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+          <form [formGroup]="form" (ngSubmit)="submit()" class="needs-validation">
+            <div class="mb-5 position-relative">
+              <div class="form-floating">
+                <input formControlName="name"
+                       id="name"
+                       type="text"
+                       required
+                       placeholder="Player Name"
+                       class="form-control"
+                       [class.is-valid]="f['name'].touched && f['name'].valid"
+                       [class.is-invalid]="f['name'].touched && f['name'].invalid"
+                >
+                <label for="name">*Name</label>
+                <div *ngIf="f['name'].touched && f['name'].valid" class="valid-tooltip">Looks good!</div>
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="invalid-tooltip">
+                  <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+                </div>
               </div>
             </div>
 
-            <div class="row">
-              <div class="form-floating mb-3">
-                <input formControlName="email" id="email" type="email" class="form-control"
-                       placeholder="name@example.com">
-                <label for="email">Email</label>
-              </div>
-              <div class=" mb-2">
-                <div *ngIf="f['email'].touched && f['email'].invalid" class="alert-danger">
+            <div class="mb-5">
+              <div class="form-floating position-relative">
+                <input formControlName="email"
+                       id="email"
+                       type="email"
+                       required
+                       placeholder="name@example.com"
+                       class="form-control"
+                       [class.is-valid]="f['email'].touched && f['email'].valid"
+                       [class.is-invalid]="f['email'].touched && f['email'].invalid"
+                >
+                <label for="email">*Email</label>
+                <div *ngIf="f['email'].touched && f['email'].valid" class="valid-tooltip">Looks good!</div>
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="invalid-tooltip">
                   <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
                   <div *ngIf="f['email'].errors && f['email'].errors['email']">Email is invalid.</div>
                 </div>
               </div>
             </div>
 
-            <button class="btn btn-success" type="submit" [disabled]="!form.valid">Submit</button>
+            <div class="mb-0">
+              <div class="d-flex justify-content-between">
+                <a href="#" routerLink="/players/index" class="btn btn-info">Back</a>
+                <button class="btn btn-success" type="submit" [disabled]="!form.valid">Submit</button>
+              </div>
+            </div>
           </form>
+
         </div>
       </div>
     </div>

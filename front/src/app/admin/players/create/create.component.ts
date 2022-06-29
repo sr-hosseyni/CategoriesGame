@@ -51,5 +51,4 @@ export class CreateComponent implements OnInit {
       this.router.navigateByUrl('players/index');
     })
   }
-
 }
