@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ApiModule, Configuration, ConfigurationParameters} from "./core/api";
-import {HttpClientModule} from "@angular/common/http";
-import {environment} from "../environments/environment";
+import { ApiModule, Configuration, ConfigurationParameters } from "./core/api";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { environment } from "../environments/environment";
 import { AdminModule } from "./admin/admin.module";
 import { CommonModule } from "@angular/common";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppInterceptor } from "./shared/app-interceptor.service";
 
 export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
@@ -30,7 +31,10 @@ export function apiConfigFactory(): Configuration {
     NgbModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
