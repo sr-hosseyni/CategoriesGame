@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerRead, PlayerService } from "../../../core/backend";
+import { UserRead, UserService, UserWrite } from "../../../core/backend";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-edit',
@@ -11,13 +12,14 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class EditComponent implements OnInit {
 
   id!: number;
-  player!: PlayerRead;
+  user: UserWrite = {} as UserWrite;
   form!: FormGroup;
 
   constructor(
-    public playerService: PlayerService,
+    public userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location,
   ) {
   }
 
@@ -27,14 +29,22 @@ export class EditComponent implements OnInit {
    * @return response()
    */
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['playerId'];
-    this.playerService.getPlayerItem(this.id + '').subscribe((data: PlayerRead) => {
-      this.player = data;
-    });
+    this.id = this.route.snapshot.params['userId'];
+    let state = this.location.getState() as { data: { currentUser: UserRead } };
+    if (state.data && state.data.currentUser && state.data.currentUser.id == this.id) {
+      this.user = state.data.currentUser;
+      this.buildForm();
+    } else {
+      this.userService.getUserItem(this.id + '').subscribe((data: UserRead) => {
+        this.user = data;
+        this.buildForm();
+      });
+    }
+  }
 
+  buildForm() {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', Validators.required)
+      email: new FormControl(this.user.email, Validators.required),
     });
   }
 
@@ -54,9 +64,9 @@ export class EditComponent implements OnInit {
    */
   submit() {
     console.log(this.form.value);
-    this.playerService.putPlayerItem(this.id + '', this.form.value).subscribe((res: any) => {
-      console.log('Player updated successfully!');
-      this.router.navigateByUrl('players/index');
+    this.userService.putUserItem(this.id + '', this.form.value).subscribe((res: any) => {
+      console.log('User updated successfully!');
+      this.router.navigateByUrl('users/index');
     })
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerRead, PlayerService } from "../../../core/backend";
+import { GameRead, GameService } from "../../../core/backend";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from "@angular/common";
 
@@ -11,10 +11,10 @@ import { Location } from "@angular/common";
 export class ViewComponent implements OnInit {
 
   id!: number;
-  player!: PlayerRead;
+  game: GameRead = {} as GameRead;
 
   constructor(
-    public playerService: PlayerService,
+    public gameService: GameService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
@@ -22,21 +22,21 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['playerId'];
-    let state = this.location.getState() as { data: { currentPlayer: PlayerRead } };
-    if (state.data && state.data.currentPlayer && state.data.currentPlayer.id == this.id) {
-      this.player = state.data.currentPlayer;
+    this.id = this.route.snapshot.params['gameId'];
+    let state = this.location.getState() as { data: { currentGame: GameRead } };
+    if (state.data && state.data.currentGame && state.data.currentGame.id == this.id) {
+      this.game = state.data.currentGame;
     } else {
-      this.playerService.getPlayerItem(this.id + '').subscribe((data: PlayerRead) => {
-        this.player = data;
+      this.gameService.getGameItem(this.id + '').subscribe((data: GameRead) => {
+        this.game = data;
       });
     }
   }
 
-  deletePlayer(player: PlayerRead): void {
-    this.playerService.deletePlayerItem(player.id + '')
-      .subscribe(response => {
-        this.router.navigateByUrl('players/index');
+  deleteGame(game: GameRead): void {
+    this.gameService.deleteGameItem(game.id + '')
+      .subscribe(() => {
+        this.router.navigateByUrl('games/index');
       });
   }
 }

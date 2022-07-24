@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 //    iri: 'player',
 //    shortName: 'player',
     attributes: [
-        'normalization_context' => ['groups' => ['player:read'], 'swagger_definition_name' => 'read'],
+        'normalization_context' => ['groups' => ['player:read', 'user:read'], 'swagger_definition_name' => 'read'],
         'denormalization_context' => ['groups' => ['user:write'], 'swagger_definition_name' => 'write'],
     ],
 )]
@@ -42,12 +42,12 @@ class Player
     private Collection $words;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['player:read'])]
+    #[Groups(['player:read', 'user:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $created_at;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['player:read'])]
+    #[Groups(['player:read', 'user:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $updated_at;
 

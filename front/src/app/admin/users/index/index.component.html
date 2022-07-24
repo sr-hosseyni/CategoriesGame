@@ -3,7 +3,7 @@
     <div class="col-lg-8">
       <div class="card shadow-lg border-0 rounded-lg mt-5">
         <div class="card-header">
-          <h3 class="text-center font-weight-light my-4">Players</h3>
+          <h3 class="text-center font-weight-light my-4">Users</h3>
         </div>
         <div class="card-body">
           <table class="table align-middle">
@@ -12,39 +12,36 @@
               <th>ID</th>
               <th>Name</th>
               <th>Email</th>
-              <!--      <th>Created At</th>-->
-              <!--      <th>Updated At</th>-->
+              <th>Created At</th>
+              <th>Updated At</th>
               <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let player of players">
-              <th>{{ player.id }}</th>
-              <td>{{ player.name }}</td>
-              <td>{{ player.user.email }}</td>
-              <!--      <td>{{ player.created_at }}</td>-->
-              <!--      <td>{{ player.updated_at }}</td>-->
+            <tr *ngFor="let user of users">
+              <th>{{ user.id }}</th>
+              <td>{{ user.player?.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.player?.created_at }}</td>
+              <td>{{ user.player?.updated_at }}</td>
               <td>
                 <div class="justify-content-end d-flex my-1">
                   <div class="btn-group btn-group-sm">
-<!--                    <button (click)="openPlayer(player)" class="btn btn-sm btn-info">Open</button>-->
-                    <a href="#" [routerLink]="[player.id]" [state]="{data: {currentPlayer: player}}"
+                    <!--                    <button (click)="openUser(user)" class="btn btn-sm btn-info">Open</button>-->
+                    <a href="#" [routerLink]="[user.id]" [state]="{data: {currentUser: user}}"
                        class="btn btn-sm btn-info">View</a>
-                    <a href="#" [routerLink]="[player.id, 'edit']" [state]="{data: {currentPlayer: player}}"
+                    <a href="#" [routerLink]="[user.id, 'edit']" [state]="{data: {currentUser: user}}"
                        class="btn btn-sm btn-warning">Edit</a>
-                    <button (click)="deletePlayer(player)" class="btn btn-sm btn-danger">Delete</button>
+                    <button (click)="deleteUser(user)" class="btn btn-sm btn-danger">Delete</button>
                   </div>
                 </div>
-                <!--        <a href="#" [routerLink]="['/admin/players/', player.id]"  class="btn btn-sm btn-info">View</a>-->
-                <!--        <a href="#" [routerLink]="['/admin/players/', player.id, 'edit']"  class="btn btn-sm btn-primary">Edit</a>-->
-                <!--        <button type="button" (click)="deletePlayer(player)"  class="btn btn-sm btn-danger">Delete</button>-->
               </td>
             </tr>
             </tbody>
           </table>
           <div class="row">
             <div class="col-md-12 my-2">
-              <a href="#" routerLink="/admin/players/create" class="btn btn-sm btn-success">Create New Player</a>
+              <a href="#" routerLink="create" class="btn btn-sm btn-success">Create New User</a>
             </div>
           </div>
         </div>

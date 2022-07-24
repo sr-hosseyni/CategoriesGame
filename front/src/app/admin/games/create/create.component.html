@@ -3,45 +3,25 @@
     <div class="col-lg-5">
       <div class="card shadow-lg border-0 rounded-lg">
         <div class="card-header">
-          <h3 class="text-center font-weight-light my-4">Create New Player</h3>
+          <h3 class="text-center font-weight-light my-4">Create New Game</h3>
         </div>
         <div class="card-body">
           <form [formGroup]="form" (ngSubmit)="submit()" class="needs-validation">
             <div class="mb-5 position-relative">
               <div class="form-floating">
-                <input formControlName="name"
-                       id="name"
+                <input formControlName="description"
+                       id="description"
                        type="text"
                        required
-                       placeholder="Player Name"
+                       placeholder="Game Name"
                        class="form-control"
-                       [class.is-valid]="f['name'].touched && f['name'].valid"
-                       [class.is-invalid]="f['name'].touched && f['name'].invalid"
+                       [class.is-valid]="f['description'].touched && f['description'].valid"
+                       [class.is-invalid]="f['description'].touched && f['description'].invalid"
                 >
-                <label for="name">*Name</label>
-                <div *ngIf="f['name'].touched && f['name'].valid" class="valid-tooltip">Looks good!</div>
-                <div *ngIf="f['name'].touched && f['name'].invalid" class="invalid-tooltip">
-                  <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-5">
-              <div class="form-floating position-relative">
-                <input formControlName="email"
-                       id="email"
-                       type="email"
-                       required
-                       placeholder="name@example.com"
-                       class="form-control"
-                       [class.is-valid]="f['email'].touched && f['email'].valid"
-                       [class.is-invalid]="f['email'].touched && f['email'].invalid"
-                >
-                <label for="email">*Email</label>
-                <div *ngIf="f['email'].touched && f['email'].valid" class="valid-tooltip">Looks good!</div>
-                <div *ngIf="f['email'].touched && f['email'].invalid" class="invalid-tooltip">
-                  <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
-                  <div *ngIf="f['email'].errors && f['email'].errors['email']">Email is invalid.</div>
+                <label for="description">*Description</label>
+                <div *ngIf="f['description'].touched && f['description'].valid" class="valid-tooltip">Looks good!</div>
+                <div *ngIf="f['description'].touched && f['description'].invalid" class="invalid-tooltip">
+                  <div *ngIf="f['description'].errors && f['description'].errors['required']">Description is required.</div>
                 </div>
               </div>
             </div>

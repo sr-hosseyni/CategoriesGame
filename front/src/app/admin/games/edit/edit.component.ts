@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerRead, PlayerService } from "../../../core/backend";
+import { GameRead, GameService } from "../../../core/backend";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-edit',
@@ -11,13 +12,14 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class EditComponent implements OnInit {
 
   id!: number;
-  player!: PlayerRead;
+  game: GameRead = {} as GameRead;
   form!: FormGroup;
 
   constructor(
-    public playerService: PlayerService,
+    public gameService: GameService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location,
   ) {
   }
 
@@ -27,14 +29,23 @@ export class EditComponent implements OnInit {
    * @return response()
    */
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['playerId'];
-    this.playerService.getPlayerItem(this.id + '').subscribe((data: PlayerRead) => {
-      this.player = data;
-    });
+    this.id = this.route.snapshot.params['gameId'];
 
+    let state = this.location.getState() as { data: { currentGame: GameRead } };
+    if (state.data && state.data.currentGame && state.data.currentGame.id == this.id) {
+      this.game = state.data.currentGame;
+      this.buildForm();
+    } else {
+      this.gameService.getGameItem(this.id + '').subscribe((data: GameRead) => {
+        this.game = data;
+        this.buildForm();
+      });
+    }
+  }
+
+  buildForm() {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', Validators.required)
+      description: new FormControl(this.game.description, [Validators.required]),
     });
   }
 
@@ -54,9 +65,9 @@ export class EditComponent implements OnInit {
    */
   submit() {
     console.log(this.form.value);
-    this.playerService.putPlayerItem(this.id + '', this.form.value).subscribe((res: any) => {
-      console.log('Player updated successfully!');
-      this.router.navigateByUrl('players/index');
+    this.gameService.putGameItem(this.id + '', this.form.value).subscribe((res: any) => {
+      console.log('Game updated successfully!');
+      this.router.navigateByUrl('/admin/games');
     })
   }
 }

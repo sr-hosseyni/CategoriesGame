@@ -3,8 +3,8 @@
     <div class="col-lg-5">
       <div class="card shadow-lg border-0 rounded-lg">
         <div class="card-header">
-          <h6 class="text-center font-weight-light my-2">Player</h6>
-          <h1 class="text-primary col-md-12 text-center">{{ player.name }}</h1>
+          <h6 class="text-center font-weight-light my-2">User</h6>
+          <h1 class="text-primary col-md-12 text-center">{{ user.player?.name }}</h1>
         </div>
         <div class="card-body px-4">
 
@@ -13,7 +13,7 @@
               <strong>ID:</strong>
             </div>
             <div class="col-9">
-              <span>{{ player.id }}</span>
+              <span>{{ user.id }}</span>
             </div>
           </div>
           <div class="row my-2">
@@ -21,7 +21,7 @@
               <strong>Email:</strong>
             </div>
             <div class="col-9">
-              <span class="text-secondary">{{ player.user.email }}</span>
+              <span class="text-secondary">{{ user.email }}</span>
             </div>
           </div>
           <div class="row my-2">
@@ -29,7 +29,7 @@
               <strong>Created At:</strong>
             </div>
             <div class="col-9">
-              {{ player.created_at | date }}
+              {{ user.player?.created_at | date }}
             </div>
           </div>
           <div class="row my-2">
@@ -37,7 +37,7 @@
               <strong>Updated At:</strong>
             </div>
             <div class="col-9">
-              {{ player.updated_at | date }}
+              {{ user.player?.updated_at | date }}
             </div>
           </div>
 
@@ -46,7 +46,7 @@
               <div class="btn-group btn-group-sm">
                 <a href="#" routerLink=".." class="btn btn-info">Back</a>
                 <a href="#" routerLink="edit" class="btn btn-warning">Edit</a>
-                <button type="button" (click)="deletePlayer(player)" class="btn btn-danger">Delete</button>
+                <button type="button" (click)="deleteUser(user)" class="btn btn-danger">Delete</button>
               </div>
             </div>
           </div>

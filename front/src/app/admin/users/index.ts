@@ -1,5 +1,5 @@
-export { CreateComponent as PlayersCreateComponent } from './create/create.component';
-export { IndexComponent as PlayersIndexComponent } from './index/index.component';
-export { EditComponent as PlayersEditComponent } from './edit/edit.component';
-export { ViewComponent as PlayersViewComponent } from './view/view.component';
-export { PlayersRoutes } from "./routes"
+export { CreateComponent as UsersCreateComponent } from './create/create.component';
+export { IndexComponent as UsersIndexComponent } from './index/index.component';
+export { EditComponent as UsersEditComponent } from './edit/edit.component';
+export { ViewComponent as UsersViewComponent } from './view/view.component';
+export { UsersRoutes } from "./routes"

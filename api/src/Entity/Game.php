@@ -36,6 +36,7 @@ class Game
     private Collection $rounds;
 
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'games')]
+    #[Groups(['game:read', 'game:write'])]
     private Collection $categories;
 
     #[ORM\Column(type: 'datetime_immutable')]

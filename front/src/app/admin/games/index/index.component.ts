@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerRead, PlayerService } from "../../../core/backend";
+import { GameRead, GameService } from "../../../core/backend";
 import { Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ViewComponent } from "../view/view.component";
@@ -10,31 +10,31 @@ import { ViewComponent } from "../view/view.component";
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  players: PlayerRead[] = [];
+  games: GameRead[] = [];
 
-  constructor(private playerService: PlayerService, private modalService: NgbModal) {
+  constructor(private gameService: GameService, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
-    this.getPlayers();
+    this.getGames();
   }
 
-  getPlayers(): void {
-    this.playerService.getPlayerCollection().subscribe(response => {
-      this.players = response;
+  getGames(): void {
+    this.gameService.getGameCollection().subscribe(response => {
+      this.games = response;
     });
   }
 
-  deletePlayer(player: PlayerRead): void {
-    this.playerService.deletePlayerItem(player.id + '')
+  deleteGame(game: GameRead): void {
+    this.gameService.deleteGameItem(game.id + '')
       .subscribe(response => {
-        this.getPlayers();
+        this.getGames();
       });
   }
 
-  openPlayer(player: PlayerRead): void {
+  openGame(game: GameRead): void {
     const modalRef = this.modalService.open(ViewComponent);
-    modalRef.componentInstance.player = player;
-    modalRef.componentInstance.id = player.id;
+    modalRef.componentInstance.game = game;
+    modalRef.componentInstance.id = game.id;
   }
 }

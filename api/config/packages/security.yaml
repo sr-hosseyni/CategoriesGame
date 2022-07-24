@@ -50,6 +50,8 @@ security:
         - { path: ^/api/authentication_token, roles: PUBLIC_ACCESS }
         - { path: ^/api/categories , roles: PUBLIC_ACCESS } # @TODO remove when front sends token
         - { path: ^/api/players , roles: PUBLIC_ACCESS } # @TODO remove when front sends token
+        - { path: ^/api/games , roles: PUBLIC_ACCESS } # @TODO remove when front sends token
+        - { path: ^/api/users , roles: PUBLIC_ACCESS } # @TODO remove when front sends token
         - { path: ^/api/users , roles: PUBLIC_ACCESS, method: POST }
         - { path: ^/api/words , roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/categories, roles: IS_AUTHENTICATED_FULLY }

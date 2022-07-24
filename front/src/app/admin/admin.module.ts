@@ -13,6 +13,18 @@ import {
   CategoriesIndexComponent,
   CategoriesCreateComponent
 } from './categories';
+import {
+  GamesViewComponent,
+  GamesEditComponent,
+  GamesIndexComponent,
+  GamesCreateComponent
+} from './games';
+import {
+  UsersViewComponent,
+  UsersEditComponent,
+  UsersIndexComponent,
+  UsersCreateComponent
+} from './users';
 
 @NgModule({
   declarations: [
@@ -23,6 +35,14 @@ import {
     CategoriesEditComponent,
     CategoriesIndexComponent,
     CategoriesCreateComponent,
+    GamesViewComponent,
+    GamesEditComponent,
+    GamesIndexComponent,
+    GamesCreateComponent,
+    UsersViewComponent,
+    UsersEditComponent,
+    UsersIndexComponent,
+    UsersCreateComponent,
   ],
   imports: [
     CommonModule,
