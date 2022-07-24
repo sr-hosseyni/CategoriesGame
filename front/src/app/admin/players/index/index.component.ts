@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerRead, PlayerService } from "../../../core/api";
-import { Router } from "@angular/router";
+import { PlayerRead, PlayerService } from "../../../core/backend";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { ViewComponent } from "../view/view.component";
 
 @Component({
   selector: 'app-index',
@@ -30,11 +28,5 @@ export class IndexComponent implements OnInit {
       .subscribe(response => {
         this.getPlayers();
       });
-  }
-
-  openPlayer(player: PlayerRead): void {
-    const modalRef = this.modalService.open(ViewComponent);
-    modalRef.componentInstance.player = player;
-    modalRef.componentInstance.id = player.id;
   }
 }

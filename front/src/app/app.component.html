@@ -8,11 +8,11 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#" [routerLink]="['/']">Home</a>
+          <a class="nav-link" href="#" [routerLink]="['/admin/']">Home</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#" [routerLink]="['/games']">Games</a>
+          <a class="nav-link" href="#" [routerLink]="['/admin/games']">Games</a>
         </li>
 
         <li class="nav-item">
@@ -20,11 +20,11 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/players">Player</a>
+          <a class="nav-link" href="#" routerLink="/admin/players">Player</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/categories">Category</a>
+          <a class="nav-link" href="#" routerLink="/admin/categories">Category</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -52,31 +52,31 @@
 
 <div class="container">
   <nav
-    style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/admin/%3E%3C/svg%3E&#34;);"
     aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#" [routerLink]="['/']">Home</a>
+        <a href="#" [routerLink]="['/admin/']">Home</a>
       </li>
       <li class="breadcrumb-item">
-        <a href="#" [routerLink]="['/players']">Players</a>
+        <a href="#" [routerLink]="['/admin/players']">Players</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
-        <a href="#" [routerLink]="['/players/10']">
+        <a href="#" [routerLink]="['/admin/players/10']">
           #10
         </a>
       </li>
     </ol>
   </nav>
 
-  <a href="#" [routerLink]="['/']" class="">
+  <a href="#" [routerLink]="['/admin/']" class="">
     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
       <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
     </svg>
     <span>Home</span>
   </a>
 
-  <a href="#" [routerLink]="['/games']">
+  <a href="#" [routerLink]="['/admin/games']">
     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
       <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
     </svg>
@@ -90,14 +90,14 @@
     <span>Game</span>
   </a>
 
-  <a href="#" routerLink="/players">
+  <a href="#" routerLink="/admin/players">
     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
       <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
     </svg>
     <span>Player</span>
   </a>
 
-  <a href="#" routerLink="/categories">
+  <a href="#" routerLink="/admin/categories">
     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
       <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
     </svg>

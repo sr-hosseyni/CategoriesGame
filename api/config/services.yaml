@@ -36,3 +36,8 @@ services:
     App\OpenApi\JwtDecorator:
         decorates: 'api_platform.openapi.factory'
         arguments: [ '@.inner' ]
+
+#    'App\DataTransformer\GameInputDataTransformer': ~
+        # Uncomment only if autoconfiguration is disabled
+        #tags: [ 'api_platform.data_transformer' ]
+#    'App\DataTransformer\GameOutputDataTransformer': ~

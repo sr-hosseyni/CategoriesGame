@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ApiModule, Configuration, ConfigurationParameters } from "./core/api";
+import { ApiModule, Configuration, ConfigurationParameters } from "./core/backend";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { environment } from "../environments/environment";
-import { AdminModule } from "./admin/admin.module";
-import { CommonModule } from "@angular/common";
+// import { AdminModule } from "./admin/admin.module";
+// import { CommonModule } from "@angular/common";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppInterceptor } from "./shared/app-interceptor.service";
 
@@ -27,7 +27,6 @@ export function apiConfigFactory(): Configuration {
     BrowserModule,
     HttpClientModule,
     ApiModule.forRoot(apiConfigFactory),
-    AdminModule,
     NgbModule,
     AppRoutingModule
   ],

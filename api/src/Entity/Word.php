@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -12,8 +13,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['word:read']],
-    'denormalization_context' => ['groups' => ['word:write']],
+    'normalization_context' => ['groups' => ['word:read'], 'swagger_definition_name' => 'read'],
+    'denormalization_context' => ['groups' => ['word:write'], 'swagger_definition_name' => 'write'],
 ])]
 #[ORM\Entity(repositoryClass: WordRepository::class)]
 class Word

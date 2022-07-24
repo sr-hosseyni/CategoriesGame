@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -13,10 +14,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use DateTimeImmutable;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
-#[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['category:read']],
-    'denormalization_context' => ['groups' => ['category:write']],
-])]
+#[ApiResource(
+    shortName: 'category',
+    attributes: [
+        'normalization_context' => ['groups' => ['category:read'], 'swagger_definition_name' => 'read'],
+        'denormalization_context' => ['groups' => ['category:write'], 'swagger_definition_name' => 'write'],
+    ]
+)]
 class Category
 {
     #[ORM\Id]

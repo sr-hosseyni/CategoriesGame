@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header">
+          <h6 class="text-center font-weight-light my-2">Play</h6>
+          <h1 class="text-center font-weight-light my-2 text-warning">G</h1>
+        </div>
+        <div class="card-body">
+          <table class="table align-middle">
+            <thead>
+            <tr>
+              <th>Category</th>
+              <th>Your Word</th>
+              <th>Description</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cat of categories">
+              <th>{{ cat.name }}</th>
+              <td>
+                <input type="text" id="{{cat.id}}" (blur)="sendWord(cat)">
+              </td>
+              <td>{{ cat.description }}</td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-md-12 my-2">
+              <a href="#" routerLink="/user/word/create" class="btn btn-sm btn-success">Finish</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

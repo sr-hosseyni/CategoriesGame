@@ -21,9 +21,9 @@
           <td>
             <div class="justify-content-end d-flex">
               <div class="btn-group">
-                <a href="#" routerLink="/categories/{{ category.id }}" [state]="{data: {currentCategory: category}}"
+                <a href="#" [routerLink]="[category.id]" [state]="{data: {currentCategory: category}}"
                    class="btn btn-sm btn-outline-info">View</a>
-                <a href="#" routerLink="/categories/{{ category.id }}/edit" [state]="{data: {currentCategory: category}}"
+                <a href="#" [routerLink]="[category.id, 'edit']" [state]="{data: {currentCategory: category}}"
                    class="btn btn-sm btn-outline-dark">Edit</a>
                 <button (click)="deleteCategory(category)" class="btn btn-sm btn-outline-danger">Delete</button>
               </div>
@@ -39,7 +39,7 @@
 
   <div class="row">
     <div class="col-md-12 my-2">
-      <a href="#" routerLink="/categories/create" class="btn btn-sm btn-success">Create New Category</a>
+      <a href="#" routerLink="create" class="btn btn-sm btn-success">Create New Category</a>
     </div>
   </div>
 </div>

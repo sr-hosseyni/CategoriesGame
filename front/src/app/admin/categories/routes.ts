@@ -3,10 +3,12 @@ import { CreateComponent } from "./create/create.component";
 import { ViewComponent } from "./view/view.component";
 import { EditComponent } from "./edit/edit.component";
 
+const prefix = 'categories';
+
 export const CategoriesRoutes = [
-  {path: 'categories', component: IndexComponent},
-  {path: 'categories/index', component: IndexComponent},
-  {path: 'categories/create', component: CreateComponent},
-  {path: 'categories/:categoryId', component: ViewComponent},
-  {path: 'categories/:categoryId/edit', component: EditComponent},
+  {path: prefix, component: IndexComponent},
+  {path: prefix + '/index', redirectTo: prefix},
+  {path: prefix + '/create', component: CreateComponent},
+  {path: prefix + '/:categoryId', component: ViewComponent},
+  {path: prefix + '/:categoryId/edit', component: EditComponent},
 ];

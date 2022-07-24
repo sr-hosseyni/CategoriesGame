@@ -1,8 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Dto\Game\GameInput;
 use App\Repository\GameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,10 +13,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: GameRepository::class)]
-#[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['game:read']],
-    'denormalization_context' => ['groups' => ['game:write']],
-])]
+#[ApiResource(
+    shortName: 'game',
+    attributes: [
+        'normalization_context' => ['groups' => ['game:read'], 'swagger_definition_name' => 'read'],
+        'denormalization_context' => ['groups' => ['game:write'], 'swagger_definition_name' => 'write'],
+    ],
+)]
 class Game
 {
     #[ORM\Id]

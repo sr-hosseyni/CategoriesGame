@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService, CategoryRead } from "../../../core/api";
+import { CategoryService, CategoryRead } from "../../../core/backend";
 import { Router } from "@angular/router";
 
 @Component({

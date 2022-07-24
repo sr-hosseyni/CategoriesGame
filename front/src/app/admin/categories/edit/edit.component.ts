@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryRead, CategoryService } from "../../../core/api";
+import { CategoryRead, CategoryService } from "../../../core/backend";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 declare(strict_types=1);
 
@@ -43,7 +44,7 @@ final class JwtDecorator implements OpenApiFactoryInterface
         ]);
 
         $pathItem = new Model\PathItem(
-            ref: 'JWT Token',
+//            ref: 'JWT Token', // Cause error in openapi-generator
             post: new Model\Operation(
                 operationId: 'postCredentialsItem',
                 tags: ['Token'],

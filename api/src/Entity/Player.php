@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -12,10 +13,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PlayerRepository::class)]
-#[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['player:read']],
-    'denormalization_context' => ['groups' => ['player:write']],
-])]
+#[ApiResource(
+//    iri: 'player',
+//    shortName: 'player',
+    attributes: [
+        'normalization_context' => ['groups' => ['player:read'], 'swagger_definition_name' => 'read'],
+        'denormalization_context' => ['groups' => ['user:write'], 'swagger_definition_name' => 'write'],
+    ],
+)]
 class Player
 {
     #[ORM\Id]
@@ -25,7 +30,7 @@ class Player
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['player:read', 'user:write'])]
+    #[Groups(['player:read', 'user:read', 'user:write'])]
     private string $name;
 
     #[ORM\OneToOne(targetEntity: User::class)]
@@ -139,6 +144,24 @@ class Player
             }
         }
 
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     * @return Player
+     */
+    public function setUser(User $user): Player
+    {
+        $this->user = $user;
         return $this;
     }
 }

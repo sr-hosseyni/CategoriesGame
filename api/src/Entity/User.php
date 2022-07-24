@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -17,8 +18,8 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 #[ORM\UniqueConstraint(columns: ['email'])]
 #[ORM\HasLifecycleCallbacks]
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['user:read']],
-    'denormalization_context' => ['groups' => ['user:write']],
+    'normalization_context' => ['groups' => ['user:read'], 'swagger_definition_name' => 'read'],
+    'denormalization_context' => ['groups' => ['user:write'], 'swagger_definition_name' => 'write'],
 ])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {

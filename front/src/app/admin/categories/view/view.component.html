@@ -1,7 +1,7 @@
 <div class="container">
   <h1>{{ category.name }}</h1>
 
-  <a href="#" routerLink="/categories/index" class="btn btn-info">Back</a>
+  <a href="#" routerLink=".." class="btn btn-info">Back</a>
 
   <div>
     <strong>ID:</strong>
@@ -28,7 +28,7 @@
     <p>{{ category.updated_at }}</p>
   </div>
 
-  <a href="#" [routerLink]="['/categories/', category.id, 'edit']" class="btn btn-primary">Edit</a>
+  <a href="#" [routerLink]="[category.id, 'edit']" class="btn btn-primary">Edit</a>
   <button type="button" (click)="deleteCategory(category)" class="btn btn-danger">Delete</button>
 
 </div>

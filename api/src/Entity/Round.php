@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -14,8 +15,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RoundRepository::class)]
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['round:read']],
-    'denormalization_context' => ['groups' => ['round:write']],
+    'normalization_context' => ['groups' => ['round:read'], 'swagger_definition_name' => 'read'],
+    'denormalization_context' => ['groups' => ['round:write'], 'swagger_definition_name' => 'write'],
 ])]
 class Round
 {
