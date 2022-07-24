@@ -12,35 +12,35 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PlayerRepository::class)]
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['read']],
-    'denormalization_context' => ['groups' => ['write']],
+    'normalization_context' => ['groups' => ['player:read']],
+    'denormalization_context' => ['groups' => ['player:write']],
 ])]
 class Player
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read'])]
+    #[Groups(['player:read'])]
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['player:read', 'player:write'])]
     private string $name;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['player:read', 'player:write'])]
     private string $email;
 
     #[ORM\OneToMany(mappedBy: 'player', targetEntity: Word::class)]
     private Collection $words;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['player:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $created_at;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['player:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $updated_at;
 

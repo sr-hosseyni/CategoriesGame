@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\RoundRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,39 +14,42 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RoundRepository::class)]
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['read']],
-    'denormalization_context' => ['groups' => ['write']],
+    'normalization_context' => ['groups' => ['round:read']],
+    'denormalization_context' => ['groups' => ['round:write']],
 ])]
 class Round
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read'])]
+    #[Groups(['round:read'])]
     private int $id;
 
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read', 'write'])]
+    #[Groups(['round:read', 'round:write'])]
     private int $number;
 
     #[ORM\Column(type: 'string', length: 1, nullable: false)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['round:read', 'round:write'])]
     private string $letter;
 
     #[ORM\ManyToOne(targetEntity: Game::class, inversedBy: 'rounds')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['round:read', 'round:write'])]
+    #[ApiProperty(required: true, example: '/api/games/1')]
     private Game $game;
 
     #[ORM\OneToMany(mappedBy: 'round', targetEntity: Word::class, orphanRemoval: true)]
+    #[ApiSubresource]
     private Collection $words;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['round:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $created_at;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['round:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $updated_at;
 

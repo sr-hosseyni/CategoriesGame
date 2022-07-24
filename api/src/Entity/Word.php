@@ -2,59 +2,65 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\WordRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
-use DateTime;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-#[ORM\Entity(repositoryClass: WordRepository::class)]
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['read']],
-    'denormalization_context' => ['groups' => ['write']],
+    'normalization_context' => ['groups' => ['word:read']],
+    'denormalization_context' => ['groups' => ['word:write']],
 ])]
+#[ORM\Entity(repositoryClass: WordRepository::class)]
 class Word
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read'])]
+    #[Groups(['word:read'])]
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['word:read', 'word:write'])]
     private string $content;
 
     #[ORM\ManyToOne(targetEntity: Player::class, inversedBy: 'words')]
     #[ORM\JoinColumn(nullable: false)]
+    #[ApiFilter(SearchFilter::class, strategy: 'exact')]
     private Player $player;
 
     #[ORM\ManyToOne(targetEntity: Round::class, inversedBy: 'words')]
     #[ORM\JoinColumn(nullable: false)]
+    #[ApiFilter(SearchFilter::class, strategy: 'exact')]
+    #[Groups(['word:read', 'word:write'])]
+    #[ApiProperty(required: true, example: '/api/rounds/10')]
     private Round $round;
 
     #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['word:read', 'word:write'])]
+    #[ApiProperty(required: true, example: '/api/categories/16')]
     private Category $category;
 
     #[ORM\Column(type: 'smallint')]
-    #[Groups(groups: ['read'])]
+    #[Groups(groups: ['word:read'])]
     private int $status;
 
     #[ORM\Column(type: 'smallint', nullable: true)]
-    #[Groups(groups: ['read'])]
+    #[Groups(groups: ['word:read'])]
     private int $points;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['word:read'])]
     #[Gedmo\Timestampable(on: 'update')]
     private \DateTimeImmutable $created_at;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['word:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $updated_at;
 

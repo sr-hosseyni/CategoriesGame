@@ -12,19 +12,19 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: GameRepository::class)]
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['read']],
-    'denormalization_context' => ['groups' => ['write']],
+    'normalization_context' => ['groups' => ['game:read']],
+    'denormalization_context' => ['groups' => ['game:write']],
 ])]
 class Game
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read'])]
+    #[Groups(['game:read'])]
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['game:read', 'game:write'])]
     private string $description = '';
 
     #[ORM\OneToMany(mappedBy: 'game', targetEntity: Round::class, orphanRemoval: true)]
@@ -34,12 +34,12 @@ class Game
     private Collection $categories;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['game:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $created_at;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['game:read'])]
     #[Gedmo\Timestampable(on: 'create')]
     private \DateTimeImmutable $updated_at;
 

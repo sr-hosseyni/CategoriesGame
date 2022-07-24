@@ -14,24 +14,24 @@ use DateTimeImmutable;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['read']],
-    'denormalization_context' => ['groups' => ['write']],
+    'normalization_context' => ['groups' => ['category:read']],
+    'denormalization_context' => ['groups' => ['category:write']],
 ])]
 class Category
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups('read')]
+    #[Groups('category:read')]
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['category:read', 'category:write'])]
     #[ApiProperty(required: true)]
     private string $name;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(['read', 'write'])]
+    #[Groups(['category:read', 'category:write'])]
     private string $description = '';
 
     /** @var Collection<integer,Game> */
@@ -39,12 +39,12 @@ class Category
     private Collection $games;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups('read')]
+    #[Groups('category:read')]
     #[Gedmo\Timestampable(on: 'create')]
     private DateTimeImmutable $created_at;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
+    #[Groups(['category:read'])]
     #[Gedmo\Timestampable(on: 'update')]
     private DateTimeImmutable $updated_at;
 
