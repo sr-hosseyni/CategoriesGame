@@ -12,3 +12,6 @@ swagger_ui:
     path: /api/ui
     controller: api_platform.swagger.action.ui
 
+authentication_token:
+    path: /api/authentication_token
+    methods: ['POST']

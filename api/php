@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#echo "docker compose exec php sh -c $@"
+docker compose exec php $@

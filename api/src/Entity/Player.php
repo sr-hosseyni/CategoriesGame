@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PlayerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -24,12 +25,13 @@ class Player
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['player:read', 'player:write'])]
+    #[Groups(['player:read', 'user:write'])]
     private string $name;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['player:read', 'player:write'])]
-    private string $email;
+    #[ORM\OneToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
+    #[Groups(['player:read'])]
+    private User $user;
 
     #[ORM\OneToMany(mappedBy: 'player', targetEntity: Word::class)]
     private Collection $words;
@@ -96,17 +98,19 @@ class Player
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
+//    #[ApiProperty]
+//    #[Groups(['player:read'])]
+//    public function getEmail(): ?string
+//    {
+//        return $this->user->getEmail();
+//    }
+//
+//    public function setEmail(string $email): self
+//    {
+//        $this->email = $email;
+//
+//        return $this;
+//    }
 
     /**
      * @return Collection|Word[]
