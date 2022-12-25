@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="card shadow-lg border-0 rounded-lg">
+        <div class="card-header">
+          <h3 class="text-center font-weight-light my-4">Login</h3>
+          <h6 *ngIf="authService.error" class="text-danger">{{authService.error}}</h6>
+          <h6 *ngIf="!authService.error" class="text-danger">&nbsp;</h6>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="submit()" class="needs-validation">
+            <div class="mb-5 position-relative">
+              <div class="form-floating">
+                <input formControlName="email"
+                       id="email"
+                       type="text"
+                       required
+                       placeholder="Game Name"
+                       class="form-control"
+                       (change)="authService.error = ''"
+                       [class.is-valid]="!authService.error && f['email'].touched && f['email'].valid"
+                       [class.is-invalid]="authService.error || f['email'].touched && f['email'].invalid"
+                >
+                <label for="email">*email</label>
+                <div *ngIf="!authService.error && f['email'].touched && f['email'].valid" class="valid-tooltip">
+                  Looks good!
+                </div>
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="invalid-tooltip">
+                  <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-5 position-relative">
+              <div class="form-floating">
+                <input formControlName="password"
+                       id="password"
+                       type="password"
+                       required
+                       placeholder="Game Name"
+                       class="form-control"
+                       (change)="authService.error = ''"
+                       [class.is-valid]="!authService.error && f['password'].touched && f['password'].valid"
+                       [class.is-invalid]="authService.error || f['password'].touched && f['password'].invalid"
+                >
+                <label for="password">*password</label>
+                <div *ngIf="!authService.error && f['password'].touched && f['password'].valid" class="valid-tooltip">
+                  Looks good!
+                </div>
+                <div *ngIf="f['password'].touched && f['password'].invalid" class="invalid-tooltip">
+                  <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-0">
+              <div class="d-flex justify-content-between">
+                <a href="#" routerLink="../register" class="btn btn-info">register</a>
+                <button class="btn btn-success" type="submit" [disabled]="!form.valid">Login</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

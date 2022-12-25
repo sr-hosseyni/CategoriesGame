@@ -4,34 +4,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiModule, Configuration, ConfigurationParameters } from "./core/backend";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import { environment } from "../environments/environment";
+import { HttpClientModule } from "@angular/common/http";
 // import { AdminModule } from "./admin/admin.module";
 // import { CommonModule } from "@angular/common";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppInterceptor } from "./shared/app-interceptor.service";
-
-export function apiConfigFactory(): Configuration {
-  const params: ConfigurationParameters = {
-    basePath: environment.basePath,
-  };
-  return new Configuration(params);
-}
+import { AppInterceptorProvider } from "./shared/app-interceptor.service.provider";
+import { LoginComponent } from './shared/components/login/login.component';
+import { RegisterComponent } from './shared/components/register/register.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ApiConfigurationProvider } from "./shared/api-configuration.provider";
+import { EnvServiceProvider } from "./shared/env.service.provider";
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     // CommonModule,
     BrowserModule,
     HttpClientModule,
-    ApiModule.forRoot(apiConfigFactory),
+    FormsModule,
+    ReactiveFormsModule,
+    ApiModule,
     NgbModule,
     AppRoutingModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}
+    EnvServiceProvider,
+    ApiConfigurationProvider,
+    AppInterceptorProvider,
+    // {provide: Configuration, useClass: ApiConfigurationServiceProvider, multi: false},
   ],
   bootstrap: [AppComponent]
 })
