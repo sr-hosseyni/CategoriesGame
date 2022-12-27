@@ -15,8 +15,6 @@ export class AppInterceptor implements HttpInterceptor {
         finalize(() => this.loadingService.dec())
       );
   }
-
-  // @todo: redirect to login if status code is 401, I am just writing here but id does not mean that is supposed to be implemented here!!
 }
 
 export const  AppInterceptorProvider = {

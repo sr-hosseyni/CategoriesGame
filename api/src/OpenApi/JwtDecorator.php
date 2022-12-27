@@ -72,6 +72,7 @@ final class JwtDecorator implements OpenApiFactoryInterface
                         ],
                     ]),
                 ),
+                security: [],
             ),
         );
         $openApi->getPaths()->addPath('/api/authentication_token', $pathItem);

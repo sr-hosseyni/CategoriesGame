@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Configuration, Credentials, Token, TokenService } from "../core/backend";
+import { Credentials, Token, TokenService } from "../core/backend";
 import { HttpErrorResponse } from "@angular/common/http";
-import { shareReplay } from "rxjs";
+import { map, Observable, shareReplay, tap } from "rxjs";
 import { EnvService } from "./env.service";
 
 @Injectable({
@@ -13,25 +13,26 @@ export class AuthService {
   constructor(
     private tokenService: TokenService,
     private envService: EnvService,
-    // private apiConfiguration: Configuration
   ) {
   }
 
-  login(credentials: Credentials) {
+  login(credentials: Credentials): Observable<boolean> {
     return this.tokenService.postCredentialsItem(credentials)
-      .subscribe({
-        next: (token: Token) => {
-          console.log('Logged in successfully! TOKEN=' + token.token);
-          this.storeAccessToken(token);
-          shareReplay(1)
-          // @todo call somehow next subscriber here to be able to set action in the login component
-        },
-        error: (error: HttpErrorResponse) => {
-          this.error = error.error.message;
-        }
-      });
+      .pipe(
+        tap({
+            next: (token: Token) => {
+              console.log('Logged in successfully!');
+              this.storeAccessToken(token);
+              shareReplay(1)
+            },
+            error: (error: HttpErrorResponse) => {
+              this.error = error.error.message;
+            },
+          },
+        ),
+        map(() => this.isLoggedIn())
+      );
   }
-
 
   private storeAccessToken(token: Token) {
     if (token.token) {
@@ -44,7 +45,7 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    return !!this.getAccessToken();
+    return this.getAccessToken() !== null;
   }
 
   public getAccessToken() {
