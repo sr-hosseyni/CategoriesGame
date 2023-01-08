@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 //    iri: 'player',
 //    shortName: 'player',
     attributes: [
+        'force_eager' => false,
         'normalization_context' => ['groups' => ['player:read', 'user:read'], 'swagger_definition_name' => 'read'],
         'denormalization_context' => ['groups' => ['user:write'], 'swagger_definition_name' => 'write'],
     ],

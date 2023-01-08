@@ -18,7 +18,11 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 #[ORM\UniqueConstraint(columns: ['email'])]
 #[ORM\HasLifecycleCallbacks]
 #[ApiResource(attributes: [
-    'normalization_context' => ['groups' => ['user:read'], 'swagger_definition_name' => 'read'],
+    'normalization_context' => [
+        'groups' => ['user:read'],
+        'swagger_definition_name' => 'read',
+//        "enable_max_depth" => true
+    ],
     'denormalization_context' => ['groups' => ['user:write'], 'swagger_definition_name' => 'write'],
 ])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
